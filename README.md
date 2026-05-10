@@ -1,2 +1,3 @@
 # Type-001
-Noting
+PLEASE READ THIS 
+Nothing 
