@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-C | Portal Kelas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1a0033;
+            --bg-darker: #0f001a;
+            --bg-glass: rgba(139, 92, 246, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #c4b5fd;
+            --accent-cyan: #00d4ff;
+            --accent-pink: #ff0080;
+            --accent-purple: #8b5cf6;
+            --border: rgba(139, 92, 246, 0.2);
+            --border-light: rgba(139, 92, 246, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body { 
+            background: linear-gradient(135deg, #1a0033 0%, #0f001a 50%, #1a0033 100%);
+            color: var(--text-main); 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            padding-top: 80px; 
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(15, 0, 26, 0.95); 
+            backdrop-filter: blur(20px);
+            height: 70px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 0 5%; 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo { 
+            font-weight: 800; 
+            color: var(--accent-cyan); 
+            letter-spacing: 2px;
+            font-size: 16px;
+        }
+        
+        .nav-right ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 25px; 
+        }
+        
+        .nav-right ul li a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 11px; 
+            font-weight: 700; 
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-right ul li a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .container { 
+            width: 92%; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            padding-bottom: 40px;
+        }
+        
+        section { 
+            padding: 30px 0; 
+            border-bottom: 1px solid var(--border-light); 
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* HERO SECTION */
+        .hero-container { 
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(59, 29, 120, 0.1) 100%);
+            border-radius: 28px; 
+            border: 1px solid var(--border); 
+            padding: 24px; 
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-img { 
+            width: 100%; 
+            height: 220px; 
+            border-radius: 20px; 
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 29, 120, 0.3)),
+                        url('https://i.ibb.co.com/jPGfs5wK/IMG-20260411-WA0022.jpg') center/cover;
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+        }
+        
+        .hero-text { 
+            padding: 0; 
+            text-align: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+        }
+        
+        .hero-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* STAT NUMBERS */
+        .stat-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 12px;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(139, 92, 246, 0.08);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        
+        .stat-number.cyan { color: var(--accent-cyan); }
+        .stat-number.pink { color: var(--accent-pink); }
+
+        /* IG CARD */
+        .ig-card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid var(--border);
+            padding: 16px 20px; 
+            border-radius: 20px; 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center; 
+            margin-bottom: 30px;
+        }
+        
+        .ig-btn-link {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+            color: white; 
+            text-decoration: none;
+            padding: 8px 20px; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 800;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .ig-btn-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* TAB STYLES */
+        .tab-center { 
+            display: flex; 
+            justify-content: center; 
+            margin: 30px 0; 
+        }
+        
+        .tab-box { 
+            display: flex; 
+            background: rgba(139, 92, 246, 0.08); 
+            padding: 6px; 
+            border-radius: 50px; 
+            border: 1px solid var(--border); 
+            position: relative; 
+            width: fit-content;
+        }
+        
+        .tab-btn { 
+            padding: 12px 24px; 
+            font-size: 13px; 
+            font-weight: 700; 
+            color: var(--text-muted); 
+            cursor: pointer; 
+            position: relative; 
+            z-index: 2; 
+            transition: color 0.3s ease;
+            border: none;
+            background: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .tab-btn.active { 
+            color: white; 
+        }
+        
+        .glider { 
+            position: absolute; 
+            height: calc(100% - 12px); 
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+            border-radius: 50px; 
+            top: 6px; 
+            left: 6px; 
+            z-index: 1; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slider-wrapper { 
+            overflow: hidden; 
+            width: 100%; 
+        }
+        
+        .slider-inner { 
+            display: flex; 
+            width: 200%; 
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        
+        .slide { 
+            width: 50%; 
+            padding-right: 10px; 
+        }
+
+        /* CARDS */
+        .card { 
+            background: rgba(139, 92, 246, 0.08);
+            border-radius: 20px; 
+            padding: 20px; 
+            border: 1px solid var(--border); 
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            background: rgba(139, 92, 246, 0.12);
+            border-color: var(--accent-purple);
+        }
+
+        .table-container { 
+            overflow-x: auto; 
+            margin-bottom: 15px; 
+            border-radius: 15px; 
+            border: 1px solid var(--border);
+            background: rgba(139, 92, 246, 0.05);
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+        }
+        
+        th { 
+            background: rgba(139, 92, 246, 0.15); 
+            color: var(--accent-cyan); 
+            padding: 12px; 
+            text-align: left; 
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        
+        td { 
+            padding: 12px; 
+            border-top: 1px solid var(--border-light); 
+            font-size: 13px; 
+            font-weight: 600; 
+        }
+        
+        .today-highlight { 
+            background: rgba(0, 212, 255, 0.1) !important; 
+            border-left: 4px solid var(--accent-cyan); 
+        }
+
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 12px; 
+            margin-bottom: 20px;
+        }
+        
+        .gallery img { 
+            width: 100%; 
+            height: 160px; 
+            object-fit: cover; 
+            border-radius: 18px; 
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid var(--border);
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--text-main);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-action:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--accent-cyan);
+        }
+
+        .btn-action.primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+            border: none;
+            color: white;
+        }
+
+        .btn-action.primary:hover {
+            transform: translateY(-2px);
+        }
+        
+        h2 { 
+            font-size: 1.1rem; 
+            margin-bottom: 20px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        
+        h2::before { 
+            content: ''; 
+            width: 4px; 
+            height: 18px; 
+            background: linear-gradient(180deg, var(--accent-cyan), var(--accent-pink)); 
+            border-radius: 4px; 
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        /* ORG CHART STYLE */
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .org-level {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .org-label {
+            font-size: 11px;
+            color: var(--accent-cyan);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .org-person {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+            color: #1a0033;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 12px;
+            min-width: 110px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+        }
+
+        .org-connector {
+            width: 2px;
+            height: 10px;
+            background: var(--border);
+        }
+
+        .org-row {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .org-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            gap: 6px;
+        }
+
+        .org-row::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 10px;
+            background: var(--border);
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .stat-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .org-row {
+                gap: 15px;
+            }
+
+            .tab-btn {
+                padding: 10px 18px;
+                font-size: 12px;
+            }
+
+            .nav-right ul {
+                gap: 15px;
+            }
+        }
+
+        /* MODAL STYLES */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(26, 0, 51, 0.98), rgba(15, 0, 26, 0.98));
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .modal-close {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
+
+        .modal-close:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--accent-cyan);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea,
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input[type="file"] {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group textarea:focus,
+        .form-group input[type="file"]:focus {
+            background: rgba(139, 92, 246, 0.12);
+            border-color: var(--accent-cyan);
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .file-preview {
+            margin-top: 12px;
+            padding: 12px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .file-preview.show {
+            display: block;
+        }
+
+        .file-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .file-preview p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .btn-cancel {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-cancel:hover {
+            background: rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+            color: white;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">X-C</div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#jadwal-piket">Jadwal</a></li>
+                <li><a href="#struktur">Struktur</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- HOME SECTION -->
+        <section id="home">
+            <div class="hero-container">
+                <div class="hero-img"></div>
+                <div class="hero-text">
+                    <h1>X-C</h1>
+                    <p>SMAN 80 JAKARTA UTARA | 2025-2026</p>
+                </div>
+            </div>
+
+            <div class="stat-container">
+                <div class="stat-item">
+                    <div class="stat-number cyan">25</div>
+                    <p style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Siswa</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number pink">37</div>
+                    <p style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Hari Aktif</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <p style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Bulan</p>
+                </div>
+            </div>
+
+            <div class="ig-card">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span style="font-size: 20px;">📸</span>
+                    <span style="font-weight: 700; font-size: 14px;">Class Instagram</span>
+                </div>
+                <a href="https://www.instagram.com/xcelence_80?igsh=MW8xaHplamptOHk4aA%3D%3D" class="ig-btn-link">Kunjungi</a>
+            </div>
+
+            <h2>Student of the Month</h2>
+            <div class="card" style="display:flex; align-items:center; gap:15px; border-color:rgba(255, 215, 0, 0.5);">
+                <img src="https://via.placeholder.com/60" style="border-radius:50%; border:2px solid rgba(255, 215, 0, 0.7); object-fit:cover; width:60px; height:60px;">
+                <div>
+                    <h4 style="margin:0; color: var(--text-main);">Saskia</h4>
+                    <p style="font-size:11px; color:var(--text-muted); margin-top:4px;">Siswa paling berprestasi bulan ini</p>
+                </div>
+            </div>
+
+            <h2>Kabar Kelas</h2>
+            <div class="card">
+                <h3 style="background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🏆 Juara Classmeeting</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px;">Kelas kita resmi menyabet gelar juara 1 dalam kompetisi Futsal se-angkatan!</p>
+            </div>
+        </section>
+
+        <!-- JADWAL SECTION -->
+        <section id="jadwal-piket">
+            <div class="tab-center">
+                <div class="tab-box">
+                    <div class="glider" id="glider"></div>
+                    <button class="tab-btn active" id="btn-j" data-tab="j">Jadwal Pelajaran</button>
+                    <button class="tab-btn" id="btn-p" data-tab="p">Jadwal Piket</button>
+                </div>
+            </div>
+
+            <div class="slider-wrapper">
+                <div class="slider-inner" id="mainSlider">
+                    <div class="slide">
+                        <div class="table-container" id="j-1"><table><thead><tr><th colspan="2">SENIN</th></tr></thead><tbody><tr><td>07.30 - 09.40</td><td>AGAMA</td></tr><tr><td>10.10 - 12.15</td><td>PJOK</td></tr><tr><td>13.35 - 15.00</td><td>SENI RUPA</td></tr></tbody></table></div>
+                        <div class="table-container" id="j-2"><table><thead><tr><th colspan="2">SELASA</th></tr></thead><tbody><tr><td>06.50 - 08.20</td><td>INFORMATIKA</td></tr><tr><td>08.20 - 10.15</td><td>GEOGRAFI</td></tr><tr><td>10.55 - 13.35</td><td>FISIKA</td></tr></tbody></table></div>
+                        <div class="table-container" id="j-3"><table><thead><tr><th colspan="2">RABU</th></tr></thead><tbody><tr><td>07.30 - 08.50</td><td>MATEMATIKA</td></tr><tr><td>12.20 - 15.00</td><td>SEJARAH</td></tr></tbody></table></div>
+                        <div class="table-container" id="j-4"><table><thead><tr><th colspan="2">KAMIS</th></tr></thead><tbody><tr><td>06.50 - 09.05</td><td>KIMIA</td></tr><tr><td>12.15 - 15.00</td><td>BIOLOGI</td></tr></tbody></table></div>
+                        <div class="table-container" id="j-5"><table><thead><tr><th colspan="2">JUMAT</th></tr></thead><tbody><tr><td>06.30 - 07.20</td><td>TADARUS</td></tr><tr><td>07.20 - 09.20</td><td>EKONOMI</td></tr></tbody></table></div>
+                    </div>
+
+                    <div class="slide">
+                        <div class="card" style="padding:0">
+                            <table>
+                                <thead><tr><th>HARI</th><th>PETUGAS</th></tr></thead>
+                                <tbody>
+                                    <tr id="p-1"><td>SENIN</td><td>Malika, Najwa, Marin, Randy, Richel</td></tr>
+                                    <tr id="p-2"><td>SELASA</td><td>Gysel, Rafa, Ayyi, Raissa, Nabila</td></tr>
+                                    <tr id="p-3"><td>RABU</td><td>Yusuf, Syauqi, Kemal, Enes, Natalie</td></tr>
+                                    <tr id="p-4"><td>KAMIS</td><td>Farhan, Jhonatan, Lovino, Aira</td></tr>
+                                    <tr id="p-5"><td>JUMAT</td><td>Alma, Omar, Arkhan, Husaein</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STRUKTUR SECTION -->
+        <section id="struktur">
+            <h2>Struktur & Organisasi</h2>
+            
+            <div class="org-chart">
+                <div class="org-level">
+                    <div class="org-label">Wali Kelas</div>
+                    <div class="org-person">Abdul Wahab S.Pdi</div>
+                    <div class="org-connector"></div>
+                </div>
+
+                <div class="org-row">
+                    <div class="org-column">
+                        <div class="org-label">Ketua Kelas</div>
+                        <div class="org-person">Putry</div>
+                    </div>
+                    <div class="org-column">
+                        <div class="org-label">Wakil Ketua</div>
+                        <div class="org-person">Jeriko</div>
+                    </div>
+                </div>
+
+                <div class="org-row">
+                    <div class="org-column">
+                        <div class="org-label">Sekertaris</div>
+                        <div class="org-person">Pratiwi</div>
+                        <div class="org-person">Paulista</div>
+                    </div>
+                    <div class="org-column">
+                        <div class="org-label">Bendahara</div>
+                        <div class="org-person">Lista</div>
+                        <div class="org-person">Davina</div>
+                    </div>
+                </div>
+
+                <div class="org-row">
+                    <div class="org-column">
+                        <div class="org-label">Keamanan</div>
+                        <div class="org-person">Damar</div>
+                        <div class="org-person">Windi</div>
+                    </div>
+                    <div class="org-column">
+                        <div class="org-label">Kebersihan</div>
+                        <div class="org-person">Jeriko</div>
+                        <div class="org-person">Raka</div>
+                    </div>
+                </div>
+
+                <div class="org-row">
+                    <div class="org-column">
+                        <div class="org-label">Kesehatan</div>
+                        <div class="org-person">Eki</div>
+                    </div>
+                    <div class="org-column">
+                        <div class="org-label">Kesehatan</div>
+                        <div class="org-person">Hendri</div>
+                    </div>
+                </div>
+
+                <div class="org-row">
+                    <div class="org-column">
+                        <div class="org-label">Peralatan</div>
+                        <div class="org-person">Fajri</div>
+                    </div>
+                    <div class="org-column">
+                        <div class="org-label">Peralatan</div>
+                        <div class="org-person">Windi</div>
+                    </div>
+                </div>
+
+                <div class="org-connector"></div>
+
+                <div class="org-level">
+                    <div class="org-label">Koordinator</div>
+                    <div class="org-person">Fadly</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERI SECTION -->
+        <section id="galeri">
+            <h2>Class Gallery</h2>
+            <div class="gallery">
+                <img src="https://i.ibb.co.com/d4gF2v1m/IMG-20260410-WA0009.jpg"=Moment+1" alt="Momen Kelas 1">
+                <img src="https://i.ibb.co.com/zMLw0Dg/IMG-20260410-WA0162.jpg=Moment+2" alt="Momen Kelas 2">
+                <img src="https://i.ibb.co.com/zWY71wVS/98d2b0dd680a58ff0adfdd91dd454f8f-1.jpg=Moment+3" alt="Momen Kelas 3">
+                <img src="https://i.ibb.co.com/YTZzHrS8/IMG-20260405-WA0040.jpg=Moment+4" alt="Momen Kelas 4">
+                <img src="https://i.ibb.co.com/R4kYNXWG/IMG-20260410-WA0163.jpg=Moment+5" alt="Monen kelas 5">
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn-action" onclick="openModal('modalSend')">📸 Send</button>
+                <button class="btn-action primary" onclick="openModal('modalRequest')">⬇️ Request</button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MODAL SEND FOTO -->
+    <div id="modalSend" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📸 Send Foto</h2>
+                <button class="modal-close" onclick="closeModal('modalSend')">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="senderName">Nama Pengirim</label>
+                <input type="text" id="senderName" placeholder="Masukkan nama kamu...">
+            </div>
+
+            <div class="form-group">
+                <label for="photoFile">Pilih Foto</label>
+                <input type="file" id="photoFile" accept="image/*">
+                <div id="photoPreview" class="file-preview">
+                    <img id="previewImg" src="" alt="Preview">
+                    <p id="fileName"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="photoCaption">Caption (Opsional)</label>
+                <textarea id="photoCaption" placeholder="Tambahkan deskripsi untuk foto..."></textarea>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeModal('modalSend')">Batal</button>
+                <button class="btn-submit" id="btnSendPhoto" onclick="sendPhoto()">Kirim Foto</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL REQUEST PESAN -->
+    <div id="modalRequest" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📝 Request Pesan</h2>
+                <button class="modal-close" onclick="closeModal('modalRequest')">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="requesterName">Nama Pengirim</label>
+                <input type="text" id="requesterName" placeholder="Masukkan nama kamu...">
+            </div>
+
+            <div class="form-group">
+                <label for="requestMessage">Pesan</label>
+                <textarea id="requestMessage" placeholder="Tulis pesanmu di sini..."></textarea>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeModal('modalRequest')">Batal</button>
+                <button class="btn-submit" id="btnSendRequest" onclick="sendRequest()">Kirim Pesan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Discord Webhook Configuration
+        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1308396277415022664/jFNjJ6iS4KQ6zMls7O6O2O2XXp-QpJHbFSvk2hOXx-__2ycsY2qCkXf-w4tgBLGc2yso';
+
+        // Modal Functions - Global Scope
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('show');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        // Send Photo Function
+        async function sendPhoto() {
+            const senderName = document.getElementById('senderName').value.trim();
+            const photoFile = document.getElementById('photoFile').files[0];
+            const photoCaption = document.getElementById('photoCaption').value.trim();
+            const btnSendPhoto = document.getElementById('btnSendPhoto');
+
+            if (!senderName) {
+                alert('Nama pengirim tidak boleh kosong!');
+                return;
+            }
+
+            if (!photoFile) {
+                alert('Pilih foto terlebih dahulu!');
+                return;
+            }
+
+            btnSendPhoto.disabled = true;
+            btnSendPhoto.innerHTML = '<span class="loading-spinner"></span> Mengirim...';
+
+            try {
+                // Create FormData untuk upload file
+                const formData = new FormData();
+                
+                // Append file
+                formData.append('file', photoFile);
+                
+                // Append embed message
+                const embedJson = JSON.stringify({
+                    embeds: [{
+                        title: '📸 Foto dari ' + senderName,
+                        description: photoCaption || 'Tidak ada deskripsi',
+                        color: 13107515,
+                        timestamp: new Date().toISOString(),
+                        footer: {
+                            text: 'X-C | SMAN 80 JAKARTA UTARA'
+                        }
+                    }]
+                });
+                
+                formData.append('payload_json', embedJson);
+
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert('✅ Foto berhasil dikirim!');
+                    document.getElementById('senderName').value = '';
+                    document.getElementById('photoFile').value = '';
+                    document.getElementById('photoCaption').value = '';
+                    document.getElementById('photoPreview').classList.remove('show');
+                    closeModal('modalSend');
+                } else {
+                    const errorText = await response.text();
+                    console.log('Error response:', errorText);
+                    alert('❌ Gagal mengirim. Coba lagi.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ Error: ' + error.message);
+            } finally {
+                btnSendPhoto.disabled = false;
+                btnSendPhoto.innerHTML = 'Kirim Foto';
+            }
+        }
+
+        // Send Request Function
+        async function sendRequest() {
+            const requesterName = document.getElementById('requesterName').value.trim();
+            const requestMessage = document.getElementById('requestMessage').value.trim();
+            const btnSendRequest = document.getElementById('btnSendRequest');
+
+            if (!requesterName) {
+                alert('Nama pengirim tidak boleh kosong!');
+                return;
+            }
+
+            if (!requestMessage) {
+                alert('Pesan tidak boleh kosong!');
+                return;
+            }
+
+            btnSendRequest.disabled = true;
+            btnSendRequest.innerHTML = '<span class="loading-spinner"></span> Mengirim...';
+
+            try {
+                const embed = {
+                    title: '📝 Request dari ' + requesterName,
+                    description: requestMessage,
+                    color: 13107515,
+                    timestamp: new Date().toISOString(),
+                    footer: {
+                        text: 'X-C | SMAN 80 JAKARTA UTARA'
+                    }
+                };
+
+                const payload = {
+                    embeds: [embed]
+                };
+
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    alert('✅ Pesan berhasil dikirim!');
+                    document.getElementById('requesterName').value = '';
+                    document.getElementById('requestMessage').value = '';
+                    closeModal('modalRequest');
+                } else {
+                    alert('❌ Gagal mengirim. Coba lagi.');
+                }
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+            } finally {
+                btnSendRequest.disabled = false;
+                btnSendRequest.innerHTML = 'Kirim Pesan';
+            }
+        }
+
+        // Initialize on DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab Functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const slider = document.getElementById('mainSlider');
+            const glider = document.getElementById('glider');
+
+            function switchTab(tabType) {
+                if (tabType === 'j') {
+                    slider.style.transform = 'translateX(0%)';
+                } else if (tabType === 'p') {
+                    slider.style.transform = 'translateX(-50%)';
+                }
+
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                const activeBtn = document.querySelector(`[data-tab="${tabType}"]`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                    glider.style.width = activeBtn.offsetWidth + 'px';
+                    glider.style.left = activeBtn.offsetLeft + 'px';
+                }
+            }
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabType = this.getAttribute('data-tab');
+                    switchTab(tabType);
+                });
+            });
+
+            const activeBtn = document.querySelector('.tab-btn.active');
+            if (activeBtn) {
+                glider.style.width = activeBtn.offsetWidth + 'px';
+                glider.style.left = activeBtn.offsetLeft + 'px';
+            }
+
+            const d = new Date().getDay();
+            if(d >= 1 && d <= 5) {
+                const jElement = document.getElementById('j-' + d);
+                const pElement = document.getElementById('p-' + d);
+                if(jElement) jElement.classList.add('today-highlight');
+                if(pElement) pElement.classList.add('today-highlight');
+            }
+
+            // File Preview
+            const photoFile = document.getElementById('photoFile');
+            if (photoFile) {
+                photoFile.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    const preview = document.getElementById('photoPreview');
+                    const previewImg = document.getElementById('previewImg');
+                    const fileName = document.getElementById('fileName');
+
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            previewImg.src = event.target.result;
+                            fileName.textContent = file.name;
+                            preview.classList.add('show');
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+
+            // Close modal on outside click
+            window.addEventListener('click', function(event) {
+                const modalSend = document.getElementById('modalSend');
+                const modalRequest = document.getElementById('modalRequest');
+                
+                if (event.target === modalSend) {
+                    closeModal('modalSend');
+                }
+                if (event.target === modalRequest) {
+                    closeModal('modalRequest');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
